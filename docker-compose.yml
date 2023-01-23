@@ -29,7 +29,7 @@ services:
     scale: 3
     networks:
       - app_network
-      - backend_network
+      # - backend_network
     volumes:
       - .:/code
     environment:
@@ -53,7 +53,8 @@ services:
         source: mydata
         target: /data
     networks:
-      - backend_network
+      - app_network
+      # - backend_network
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping"]
       interval: 1s
