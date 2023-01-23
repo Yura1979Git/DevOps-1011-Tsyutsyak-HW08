@@ -24,7 +24,7 @@ services:
       - traefik.constraint-label=app_network
       - traefik.http.routers.web.entrypoints=websecure
       - traefik.http.routers.web.tls=true
-      - traefik.http.routers.web.tls.certresolver=staging
+      - traefik.http.routers.web.tls.certresolver=production
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
       - "9000-9002:5000"
