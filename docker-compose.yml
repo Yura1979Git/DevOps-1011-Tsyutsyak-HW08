@@ -20,6 +20,7 @@ services:
       context: .
     labels:
       - traefik.enable=true
+      - traefik.docker.network=app_network
       - traefik.http.routers.web.entrypoints=web
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
