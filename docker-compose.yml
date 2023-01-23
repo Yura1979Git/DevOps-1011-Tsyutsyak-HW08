@@ -20,8 +20,8 @@ services:
       context: .
     labels:
       - traefik.enable=true
-      # - traefik.docker.network=app_network
-      # - traefik.constraint-label=app_network
+      - traefik.docker.network=app_network
+      - traefik.constraint-label=app_network
       - traefik.http.routers.web.entrypoints=web
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
@@ -29,7 +29,7 @@ services:
     scale: 3
     networks:
       - app_network
-      # - backend_network
+      - backend_network
     volumes:
       - .:/code
     environment:
@@ -53,8 +53,7 @@ services:
         source: mydata
         target: /data
     networks:
-      - app_network
-      # - backend_network
+      - backend_network
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping"]
       interval: 1s
@@ -69,5 +68,7 @@ volumes:
 
 networks:
   app_network:
+    name: app_network
   backend_network:
+    name: backend_network
     internal: true
