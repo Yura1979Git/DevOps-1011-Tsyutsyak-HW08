@@ -22,7 +22,9 @@ services:
       - traefik.enable=true
       - traefik.docker.network=app_network
       - traefik.constraint-label=app_network
-      - traefik.http.routers.web.entrypoints=web
+      - traefik.http.routers.web.entrypoints=websecure
+      - traefik.http.routers.web.tls=true
+      - traefik.http.routers.blog.tls.certresolver=staging
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
       - "9000-9002:5000"
