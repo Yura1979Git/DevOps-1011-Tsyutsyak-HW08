@@ -20,8 +20,8 @@ services:
       context: .
     labels:
       - traefik.enable=true
-      # - traefik.docker.network=proxy_network
-      # - traefik.constraint-label=proxy_network
+      - traefik.docker.network=proxy_network
+      - traefik.constraint-label=proxy_network
       - traefik.http.routers.web.entrypoints=web
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
