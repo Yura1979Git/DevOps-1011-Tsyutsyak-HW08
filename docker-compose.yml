@@ -18,13 +18,13 @@ services:
     build: 
       dockerfile: Dockerfile
       context: .
-    ports:
-      - "9000-9002:5000"
-    scale: 3
-    labels:
+      labels:
       - traefik.enable=true
       - traefik.http.routers.flask.entrypoints=web
       - traefik.http.routers.flask.rule=Host('web3.tyi.name')
+    ports:
+      - "9000-9002:5000"
+    scale: 3
     networks:
       - app_network
       - backend_network
