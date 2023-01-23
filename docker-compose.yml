@@ -20,8 +20,8 @@ services:
       context: .
     labels:
       - traefik.enable=true
-      - traefik.http.routers.flask.entrypoints=web
-      - traefik.http.routers.flask.rule=Host(`web3.tyi.name`)
+      - traefik.http.routers.web.entrypoints=web
+      - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
     ports:
       - "9000-9002:5000"
     scale: 3
