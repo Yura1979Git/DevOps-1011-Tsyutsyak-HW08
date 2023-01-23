@@ -11,7 +11,7 @@ services:
     volumes:
       - ./traefik:/etc/traefik
       - traefik-ssl-certs:/ssl-certs
-      - /var/run/doker.sock:/var/run/docker.sock:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - app_network
   web:
