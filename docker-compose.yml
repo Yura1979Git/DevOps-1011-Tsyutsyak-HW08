@@ -12,6 +12,8 @@ services:
       - ./traefik:/etc/traefik
       - traefik-ssl-certs:/ssl-certs
       - /var/run/doker.sock:/var/run/docker.sock:ro
+    networks:
+      - traefik
   web:
     build: 
       dockerfile: Dockerfile
@@ -21,6 +23,7 @@ services:
     scale: 3
     networks:
       - app_network
+      - traefik
       - backend_network
     volumes:
       - .:/code
@@ -60,5 +63,6 @@ volumes:
 
 networks:
   app_network:
+  traefik:
   backend_network:
     internal: true
