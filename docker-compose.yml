@@ -18,7 +18,7 @@ services:
     build: 
       dockerfile: Dockerfile
       context: .
-      labels:
+    labels:
       - traefik.enable=true
       - traefik.http.routers.flask.entrypoints=web
       - traefik.http.routers.flask.rule=Host('web3.tyi.name')
