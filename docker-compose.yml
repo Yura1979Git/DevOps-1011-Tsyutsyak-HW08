@@ -10,6 +10,7 @@ services:
       - "8080:8080"  # Don't do this in production!
     volumes:
       - ./traefik:/etc/traefik
+      - traefik-ssl-certs:/ssl-certs
       - /var/run/doker.sock:/var/run/docker.sock:ro
   web:
     build: 
@@ -54,6 +55,7 @@ services:
 
 volumes:
   mydata:
+  traefik-ssl-certs:
 
 networks:
   app_network:
