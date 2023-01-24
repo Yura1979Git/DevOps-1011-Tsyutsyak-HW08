@@ -52,7 +52,6 @@ services:
         condition: service_healthy
 
   redis:
-    container_name: redis
     image: "redis:alpine"
     volumes:
       - type: volume
