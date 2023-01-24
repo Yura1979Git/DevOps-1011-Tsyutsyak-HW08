@@ -15,6 +15,7 @@ services:
     networks:
       - app_network
   web:
+    container_name: web-python
     build: 
       dockerfile: Dockerfile
       context: .
@@ -51,6 +52,7 @@ services:
         condition: service_healthy
 
   redis:
+    container_name: redis
     image: "redis:alpine"
     volumes:
       - type: volume
