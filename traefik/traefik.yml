@@ -5,13 +5,14 @@ global:
 # (Optional) Log information
 # ---
 log:
- level: ERROR  # DEBUG, INFO, WARNING, ERROR, CRITICAL
-  format: common  # common, json, logfmt
+  level: ERROR  # DEBUG, INFO, WARNING, ERROR, CRITICAL
   filePath: /var/log/traefik/traefik.log
+  format: common  # common, json, logfmt
+  
 
 # (Optional) Accesslog
 # ---
-accesslog:
+accessLog:
   format: common  # common, json, logfmt
   filePath: /var/log/traefik/access.log
 
