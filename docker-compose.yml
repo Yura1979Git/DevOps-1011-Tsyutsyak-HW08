@@ -26,6 +26,7 @@ services:
       - traefik.http.routers.web.tls=true
       - traefik.http.routers.web.tls.certresolver=production
       - traefik.http.routers.web.rule=Host(`web3.tyi.name`)
+      - traefik.http.routers.web.service=web@docker
     ports:
       - "9000-9003:5000"
     deploy:
