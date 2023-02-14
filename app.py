@@ -2,8 +2,22 @@ import time
 import os
 import socket
 import redis
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
 
 from flask import Flask
+
+sentry_sdk.init(
+    dsn="https://6b1015457fed4edfb2babaee7758f2db@o4504677437865984.ingest.sentry.io/4504677439242240",
+    integrations=[
+        FlaskIntegration(),
+    ],
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)
 
 app = Flask(__name__)
 cache = redis.Redis(host=os.environ['REDIS_HOST'], port=os.environ['REDIS_PORT'])
@@ -41,3 +55,7 @@ def health():
             '<b>IP:</b> {local_ip}<br/>' \
             '<br/>'
     return html.format(hostname=hostname,local_ip=local_ip)
+
+@app.route('/debug-sentry')
+def trigger_error():
+    division_by_zero = 1 / 0
