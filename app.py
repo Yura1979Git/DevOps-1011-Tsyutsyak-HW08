@@ -1,10 +1,9 @@
+import sentry_sdk
 import time
 import os
 import socket
 import redis
-import sentry_sdk
 from sentry_sdk.integrations.flask import FlaskIntegration
-
 from flask import Flask
 
 sentry_sdk.init(
